@@ -17,18 +17,23 @@ public class GameController : MonoBehaviour {
 	float fadeForward = -1.2f;
 	float fadeSpeed = 3.0f;
 
+	bool kong = false;
+
 	GameObject fader;
 
 	// Use this for initialization
 	void Start () {
 		kongregateObject = GameObject.Find ("_Kongregate");
-		kongregateScript = kongregateObject.GetComponent<KongregateScript>();
+		if(kongregateObject){
+			kong=true;
+			kongregateScript = kongregateObject.GetComponent<KongregateScript>();
+		}
 		audioController = GameObject.Find("_AudioController");
 		//audioController.audio.volume = 0;
 		fader = GameObject.Find ("Fader");
 
 		timeLevelStart = Time.time;
-		if(Application.loadedLevel==1){
+		if(Application.loadedLevel==1&&kong){
 			kongregateScript.timeGameStart = timeLevelStart;
 		}
 
@@ -103,11 +108,13 @@ public class GameController : MonoBehaviour {
 
 		timeLevelEnd = Time.time;
 
-		if(loadedLevel == levelCount-2){
-			kongregateScript.timeGameEnd = timeLevelEnd;
-			kongregateScript.BeatGame();
+		if(kong){
+			if(loadedLevel == levelCount-2){
+				kongregateScript.timeGameEnd = timeLevelEnd;
+				kongregateScript.BeatGame();
+			}
+			kongregateScript.BeatLevel(loadedLevel,(int)Mathf.Round(timeLevelEnd-timeLevelStart));
 		}
-		kongregateScript.BeatLevel(loadedLevel,(int)Mathf.Round(timeLevelEnd-timeLevelStart));
 
 		//GameObject levelComplete = GameObject.Find("LevelComplete");
 		//levelComplete.GetComponent<TextMesh>().text = message;

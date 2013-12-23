@@ -38,7 +38,6 @@ public class CameraScript : MonoBehaviour {
 			                                    defaultRotation.y + Random.Range(-shakeIntensity, shakeIntensity)*.05f * differential,
 			                                    defaultRotation.z + Random.Range(-shakeIntensity, shakeIntensity)*.05f * differential,
 			                                    defaultRotation.w + Random.Range(-shakeIntensity, shakeIntensity)*.05f * differential);
-			Debug.Log ("RUNNING");
 			shakeCurrent += Time.deltaTime;
 			yield return null;
 		}
