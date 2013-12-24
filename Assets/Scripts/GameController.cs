@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log("GameController");
 		kongregateObject = GameObject.Find ("_Kongregate");
 		if(kongregateObject){
 			kong=true;

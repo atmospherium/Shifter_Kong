@@ -18,6 +18,8 @@ public class CreateBlock : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log("CreateBlock");
+
 		lightObject = transform.FindChild("PlatformLight").light;
 		lightRange = lightObject.range;
 		/*for(var i = 0; i < spawnBeat.Length; i++){

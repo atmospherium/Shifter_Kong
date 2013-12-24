@@ -14,6 +14,7 @@ public class CameraScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("Camera");
 		player = GameObject.Find("Player").transform;
 		mainCamera = transform.FindChild("Main Camera");
 		defaultRotation = mainCamera.transform.localRotation;

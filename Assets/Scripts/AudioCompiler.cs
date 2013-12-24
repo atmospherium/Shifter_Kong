@@ -21,6 +21,7 @@ public class AudioCompiler : MonoBehaviour {
 		
 	// MonoBehaviour Start
 	void Start() {
+		Debug.Log ("AudioCompiler");
 		float creationStart = Time.realtimeSinceStartup;
 
 		if(sampleEnable[0]){

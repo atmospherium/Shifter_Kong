@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		Debug.Log("PlayerController");
+
 		checkPoint = transform.position;
 
 		animTarget = transform.FindChild("Object");

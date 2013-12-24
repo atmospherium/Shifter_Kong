@@ -24,12 +24,12 @@ public class MenuBehavior : MonoBehaviour {
 			yield return null;
 		}
 
-		float pauseLength = 1f;
+		float pauseLength = 0.5f;
 		while(pauseLength>0){
 			pauseLength-=Time.deltaTime;
 			yield return null;
 		}
-
+		Debug.Log("BREAK");
 		Application.LoadLevel(1);
 
 	}

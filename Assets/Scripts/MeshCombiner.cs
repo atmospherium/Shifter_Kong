@@ -7,8 +7,8 @@ using System.Collections;
 public class MeshCombiner : MonoBehaviour {
 
 	private void Start(){
+		Debug.Log("MeshComibe");
 		Combine();
-		Debug.Log("Combined");
 	}
 
 	// Use this for initialization
