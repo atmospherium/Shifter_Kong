@@ -44,12 +44,41 @@ public class MovementPlatform : MonoBehaviour {
 		player = GameObject.Find("Player");
 		playerController = player.GetComponent<PlayerController>();
 	}
+
+	//*
+	void OnTriggerEnter2D(Collider2D c){
+		collider = c;
+		if(c.name=="Player"){
+			if(lifeLength<0.1f){
+				if(platformDir == playerController.playerDir && carryingPlayer == false){
+					carryingPlayer = true;
+					playerController.lightObject.range = 15f;
+					playerController.flareObject.brightness = 2.5f;
+					playerController.playerDir = Dir.none;
+					playerController.moving = true;
+					player.audio.Play();
+					player.transform.FindChild("Text").gameObject.SetActive(false);
+					CameraScript camScript = GameObject.Find("CameraRig").GetComponentInChildren<CameraScript>();
+					camScript.Shake();
+				}
+			}
+		}else if(c.name=="MovementCube(Clone)"){
+		}else if(distance>1f){
+			playerController.moving = false;
+			if(carryingPlayer&&c.name=="DangerCube"){
+				isDanger = true;
+			}
+			if(carryingPlayer&&c.name=="Exit"){
+				isExit = true;
+			}
+			destinationObject = c.gameObject;
+			distanceCeil = Mathf.Ceil(distance);
+		}
+	}
+	//*/
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
 		lifeLength += Time.deltaTime;
 		Vector3 trans;
 		switch(platformDir){
@@ -95,36 +124,6 @@ public class MovementPlatform : MonoBehaviour {
 			ResetPlayer();
 			DestroySelf();
 		}*/
-	}
-
-	void OnTriggerEnter2D(Collider2D c){
-		collider = c;
-		if(c.name=="Player"){
-			if(lifeLength<0.1f){
-				if(platformDir == playerController.playerDir && carryingPlayer == false){
-					carryingPlayer = true;
-					playerController.lightObject.range = 15f;
-					playerController.flareObject.brightness = 2.5f;
-					playerController.playerDir = Dir.none;
-					playerController.moving = true;
-					player.audio.Play();
-					player.transform.FindChild("Text").gameObject.SetActive(false);
-					CameraScript camScript = GameObject.Find("CameraRig").GetComponentInChildren<CameraScript>();
-					camScript.Shake();
-				}
-			}
-		}else if(c.name=="MovementCube(Clone)"){
-		}else if(distance>1f){
-			playerController.moving = false;
-			if(carryingPlayer&&c.name=="DangerCube"){
-				isDanger = true;
-			}
-			if(carryingPlayer&&c.name=="Exit"){
-				isExit = true;
-			}
-			destinationObject = c.gameObject;
-			distanceCeil = Mathf.Ceil(distance);
-		}
 	}
 
 	void DestroySelf(){
