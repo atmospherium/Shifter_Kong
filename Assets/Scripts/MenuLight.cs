@@ -16,7 +16,7 @@ public class MenuLight : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		lightCenter = transform.position;
+		lightCenter = transform.localPosition;
 		destination = lightCenter;
 		light = GetComponent<Light>();
 	}
@@ -28,7 +28,7 @@ public class MenuLight : MonoBehaviour {
 			                          Random.Range(lightCenter.z+xRange,lightCenter.y-yRange),
 			                          Random.Range(lightCenter.z+xRange,lightCenter.z-zRange));
 		}
-		transform.position = Vector3.Lerp(transform.position, destination, 0.01f);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, destination, 0.01f);
 		if(Random.Range(0f,1f)>0.8f){
 			intensityDestination = Random.Range(1.75f,2.15f);
 		}
