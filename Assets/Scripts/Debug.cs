@@ -2,7 +2,7 @@
 
 public class Debug {
 
-	private static bool debugging = true;
+	private static bool debugging = false;
 
 	public static new void Log(object message){
 		if(!debugging) return;
