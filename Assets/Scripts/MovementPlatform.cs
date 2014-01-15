@@ -62,7 +62,7 @@ public class MovementPlatform : MonoBehaviour {
 					camScript.Shake();
 				}
 			}
-		}else if(c.name=="MovementCube(Clone)"){
+		}else if(c.name=="MovementCube(Clone)"||c.name=="MovementCube"){
 		}else if(distance>1f){
 			playerController.moving = false;
 			if(carryingPlayer&&c.name=="DangerCube"){
@@ -146,7 +146,7 @@ public class MovementPlatform : MonoBehaviour {
 			playerController.moving = false;
 			
 		}
-
+		//ObjectPool.instance.PoolObject(gameObject);
 		Destroy(transform.gameObject);
 	}
 }

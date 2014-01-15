@@ -9,6 +9,8 @@ public class MeshCombiner : MonoBehaviour {
 	private void Start(){
 		Debug.Log("MeshComibe");
 		Combine();
+
+		StaticBatchingUtility.Combine(transform.gameObject);
 	}
 
 	// Use this for initialization

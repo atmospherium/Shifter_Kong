@@ -76,29 +76,34 @@ public class CreateBlock : MonoBehaviour {
 
 	void Create(){
 
-		GameObject blocku = Instantiate(movementPlatform,transform.position,Quaternion.identity) as GameObject;
+		//GameObject blocku = Instantiate(movementPlatform,transform.position,Quaternion.identity) as GameObject;
+		GameObject blocku = ObjectPool.instance.GetObjectForType("MovementCube",false);
 		MovementPlatform movementScriptu = blocku.GetComponent<MovementPlatform>();
 		movementScriptu.platformDir = Dir.up;
 		movementScriptu.Speed = childSpeed;
 		blocku.transform.parent = transform;
+		blocku.transform.localPosition = new Vector2(0,0);
 
-		GameObject blockd = Instantiate(movementPlatform,transform.position,Quaternion.identity) as GameObject;
+		GameObject blockd = ObjectPool.instance.GetObjectForType("MovementCube",false);
 		MovementPlatform movementScriptd = blockd.GetComponent<MovementPlatform>();
 		movementScriptd.platformDir = Dir.down;
 		movementScriptd.Speed = childSpeed;
 		blockd.transform.parent = transform;
+		blockd.transform.localPosition = new Vector2(0,0);
 
-		GameObject blockr = Instantiate(movementPlatform,transform.position,Quaternion.identity) as GameObject;
+		GameObject blockr = ObjectPool.instance.GetObjectForType("MovementCube",false);
 		MovementPlatform movementScriptr = blockr.GetComponent<MovementPlatform>();
 		movementScriptr.platformDir = Dir.right;
 		movementScriptr.Speed = childSpeed;
 		blockr.transform.parent = transform;
+		blockr.transform.localPosition = new Vector2(0,0);
 
-		GameObject blockl = Instantiate(movementPlatform,transform.position,Quaternion.identity) as GameObject;
+		GameObject blockl = ObjectPool.instance.GetObjectForType("MovementCube",false);
 		MovementPlatform movementScriptl = blockl.GetComponent<MovementPlatform>();
 		movementScriptl.platformDir = Dir.left;
 		movementScriptl.Speed = childSpeed;
 		blockl.transform.parent = transform;
+		blockl.transform.localPosition = new Vector2(0,0);
 
 		lightObject.range = 10;
 		flareObject.brightness = 2.5f;
